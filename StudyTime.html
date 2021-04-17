@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StudyTime</title>
+</head>
+<style>
+    #mainShow{
+        position: absolute;
+        border:1px solid gray;
+        width:300px;
+        height:500px;
+    }
+    #listShow{
+        position: relative;
+    }
+    .list{
+        border:1px solid darkgray;
+        width:100%;
+    }
+    #btn_add{
+        position: absolute;
+        left:250px;
+        top:450px;
+        width:50px;
+        height:50px;
+        font-size:30px;
+    }
+
+    #newList{
+        position: absolute;
+        border:1px solid gray;
+        width:300px;
+        height:500px;
+    }
+</style>
+<script>
+    window.onload = function(){
+        var btn_add = document.getElementById("btn_add")
+        var btn_finish = document.getElementById("btn_finish")
+        var mainShow = document.getElementById("mainShow")
+        var newList = document.getElementById("newList")
+        var newList_title = document.getElementById("newList_title")
+        var listShow = document.getElementById("listShow")
+
+        function add_list(title){
+            var list = document.createElement("div")
+            list.className = "list";
+            list.innerText = title;
+            listShow.appendChild(list);
+        }
+
+        btn_add.onclick = function () {
+            mainShow.style.display = "none";
+            newList.style.display = "";
+        }
+
+        btn_finish.onclick = function(){
+            add_list(newList_title.value);
+            newList_title.value = "";
+            mainShow.style.display = "";
+            newList.style.display = "none";
+        }
+    }
+</script>
+<body>
+<div id="mainShow">
+    <div id="listShow">
+        <div class="list">你好，感谢使用本应用，欢迎你的到来，祝您使用愉快！</div>
+    </div>
+    <button id="btn_add">+</button>
+</div>
+<div id="newList" style="display:none;">
+    <div>
+        <input id="newList_title">
+    </div>
+    <div>
+        <button id="btn_finish">完成</button>
+    </div>
+</div>
+</body>
+</html>
